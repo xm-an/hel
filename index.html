@@ -11,6 +11,7 @@
   <button onclick="copyMultilineText5()">Ncat</button>
   <button onclick="copyMultilineText6()">SQL</button>
   <button onclick="copyMultilineText7()">putty</button>
+  <button onclick="copyMultilineText8()">Enterprise</button>
   <script>
     function copyMultilineText1() {
       // Your variable containing multiline text data
@@ -254,6 +255,39 @@ ls
 cd test
 ls
 cat test.txt`;
+
+      // Assign the variable's value to the text variable
+      var text = yourMultilineVariable;
+
+      // Create a temporary textarea element to hold the text
+      var tempTextArea = document.createElement("textarea");
+      tempTextArea.value = text;
+
+      // Append the textarea element to the DOM
+      document.body.appendChild(tempTextArea);
+
+      // Select the text in the textarea
+      tempTextArea.select();
+      tempTextArea.setSelectionRange(0, 99999); /* For mobile devices */
+
+      // Copy the selected text to the clipboard
+      document.execCommand("copy");
+
+      // Remove the temporary textarea
+      document.body.removeChild(tempTextArea);
+
+    }
+            function copyMultilineText8() {
+      // Your variable containing multiline text data
+      var yourMultilineVariable = `Users  - Represent the people who will be accessing the network.
+Syslog Clients/Servers - Are programs that collect and store system log messages from various devices on the network. These messages can provide valuable information for security purposes and troubleshooting.
+SNMP Agents - Are software components that reside on network devices and respond to queries from SNMP management stations using SNMP. SNMP (Simple Network Management Protocol) is a protocol for managing network devices.
+Firewalls - Are devices that filter traffic between different parts of a network, enforcing security policies and protecting the network from unauthorized access.
+Gateway -  Is a device that allows traffic to flow between different networks. In this context, it likely refers to the internet gateway, which controls how traffic flows between the enterprise network and the internet.
+Router - Is a device that forwards data packets across networks. It determines the best path for data to travel based on the network addresses of the sender and receiver.
+Backbone Switch - Is a high-speed switch that connects different parts of a network together. It forms the core of the network and carries the most important traffic.
+Servers - Are computers that provide resources and services to other devices on the network. In this context, it likely refers to the enterprise’s servers that store data and applications.
+Message Collection Center - Could be a Security Information and Event Management (SIEM) system that collects and analyzes security events from various devices and applications on the network.`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
