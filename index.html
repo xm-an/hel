@@ -15,32 +15,24 @@
   <script>
     function copyMultilineText1() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `1)import rsa
-publicKey,privateKey =rsa.newkeys(512)
-message ="Hello"
-encMessage = rsa.encrypt(message.encode(),publicKey)
-print("Original String :" ,message)
-print("Encrypted String :" ,encMessage)
-decMessage =rsa.decrypt(encMessage,privateKey).decode()
-print("Decrypted String :" ,decMessage)
-
-2)from Crypto.PublicKey import RSA
-from Crypto import Random
-from Crypto.Cipher import PKCS1_v1_5
-import binascii
-random =Random.new().read
-key =RSA.generate(4096,random)
-message =b'Hello'
-print("Message is:",message)
-#Encryption
-cipher_encrypt = PKCS1_v1_5.new(key)
-encrypted_message =cipher_encrypt.encrypt(message)
-print("Encrypted Message is:" ,binascii.hexlify(encrypted_message))
-#Decryption
-converted_message = encrypted_message
-cipher_decrypt = PKCS1_v1_5.new(key)
-decrypted_message =cipher_decrypt.decrypt(converted_message,None)
-print("Decrypted Message is:" ,decrypted_message)`;
+      var yourMultilineVariable = `using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MyMVC.Models;
+namespace MyMVC.Controllers
+{
+ public class HomeController : Controller
+ { public async Task <IActionResult> Index()
+ {
+ var model= new StockQuote{ Symbol="Hello", Price=3200};
+ return View(model);
+ }
+ }
+}`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
@@ -65,9 +57,133 @@ print("Decrypted Message is:" ,decrypted_message)`;
     }
     function copyMultilineText2() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `ipconfig/all
-ipconfig/displaydns
-ipconfig/flushdns`;
+      var yourMultilineVariable = `1)dotnet ,dotnet new webapi -o Glossary or dotnet new webapi -o Glossary -f net5.0
+2)cd Glossary
+dotnet run
+3)curl --insecure http://localhost:5001/weatherforecast(in new cmd)
+4)remove WeatherForecast.cs from root,Controllers folder
+
+5)Glossary\GlossaryItem.cs (new)
+//GlossaryItem.cs
+namespace Glossary
+{
+ public class GlossaryItem
+ {
+ public string Term { get; set; }
+ public string Definition { get; set; }
+ }
+}
+
+6)Glossary\Controllers\ GlossaryController.cs (new)
+
+//Controllers/GlossaryController.cs
+using System;
+using System.Collections.Generic;
+using Microsoft.AspNetCore.Mvc;
+using System.IO;
+namespace Glossary.Controllers
+{
+ [ApiController]
+ [Route("api/[controller]")]
+ public class GlossaryController: ControllerBase
+ {
+ private static List<GlossaryItem> Glossary = new List<GlossaryItem> {
+ new GlossaryItem
+ {
+ Term= "HTML",
+ Definition = "Hypertext Markup Language"
+ },
+ new GlossaryItem
+ {
+ Term= "MVC",
+ Definition = "Model View Controller"
+ },
+ new GlossaryItem
+ {
+ Term= "OpenID",
+ Definition = "An open standard for authentication"
+ }
+ };
+ [HttpGet]
+ public ActionResult<List<GlossaryItem>> Get()
+ { return Ok(Glossary);
+ }
+ [HttpGet]
+ [Route("{term}")]
+ public ActionResult<GlossaryItem> Get(string term)
+ {
+ var glossaryItem = Glossary.Find(item =>
+ item.Term.Equals(term, StringComparison.InvariantCultureIgnoreCase));
+ if (glossaryItem == null)
+ { return NotFound();
+ } else
+ {
+ return Ok(glossaryItem);
+ }
+ }
+ [HttpPost]
+ public ActionResult Post(GlossaryItem glossaryItem)
+ {
+ var existingGlossaryItem = Glossary.Find(item =>
+ item.Term.Equals(glossaryItem.Term, StringComparison.InvariantCultureIgnoreCase));
+ if (existingGlossaryItem != null)
+ {
+ return Conflict("Cannot create the term because it already exists.");
+ }
+ else
+ {
+ Glossary.Add(glossaryItem);
+ var resourceUrl = Path.Combine(Request.Path.ToString(), Uri.EscapeUriString(glossaryItem.Term));
+ return Created(resourceUrl, glossaryItem);
+ }
+ }
+ [HttpPut]
+ public ActionResult Put(GlossaryItem glossaryItem)
+ {
+ var existingGlossaryItem = Glossary.Find(item =>
+ item.Term.Equals(glossaryItem.Term, StringComparison.InvariantCultureIgnoreCase));
+ if (existingGlossaryItem == null)
+ {
+ return BadRequest("Cannot update a nont existing term.");
+ } else
+ {
+ existingGlossaryItem.Definition = glossaryItem.Definition;
+ return Ok();
+ }
+ }
+ [HttpDelete]
+ [Route("{term}")]
+ public ActionResult Delete(string term)
+ {
+ var glossaryItem = Glossary.Find(item =>
+ item.Term.Equals(term, StringComparison.InvariantCultureIgnoreCase));
+ if (glossaryItem == null)
+ { return NotFound();
+ }
+ else
+ { Glossary.Remove(glossaryItem);
+ return NoContent();
+ }
+ }
+ }
+} 
+
+
+7)dotnet run 
+
+on2nd command prompt
+8)curl --insecure https://localhost:5001/api/glossary (get list)
+
+9)curl --insecure https://localhost:5001/api/glossary/MVC (single item)
+
+10)curl --insecure -X POST -d "{\"term\": \"MFA\", \"definition\":\"An authentication process.\"}" -H "ContentType:application/json" https://localhost:5001/api/glossary 
+(creating item)
+
+11)curl --insecure -X PUT -d "{\"term\": \"MVC\", \"definition\":\"Modified record of Model View
+Controller.\"}" -H "Content-Type:application/json" https://localhost:5001/api/glossary 
+(updating item
+
+12)curl --insecure --request DELETE --url https://localhost:5001/api/glossary/openid  (deleting item)`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
@@ -93,18 +209,26 @@ ipconfig/flushdns`;
     }
      function copyMultilineText3() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `Go mail>manage >Security>2step verification
-Input
-title
-Enter the mail
-crtl+k - variable
+      var yourMultilineVariable = `1)docker --version
+2)docker pull rocker/verse
+3)docker images
+4)dockerhub (create a new public repo)
+5)docker login --username=
 
-Smtp mail message
+6)docker tag 36d2b6f2a7b3 login/repo:firsttry
+7)docker push login/repo:firsttry
+(Login docker and check)
 
-port:587
-server:smtp.gmail.com
+Build image and then push
+8)cat > Dockerfile <<EOF
+FROM busybox
+CMD echo "Hello world! This is my first Docker image."
+EOF
 
-message box`;
+9)docker build -t login/repo2 .
+10)docker images
+11)docker push login/repo2
+12)docker run login/repo2`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
