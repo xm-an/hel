@@ -14,7 +14,45 @@
   <script>
     function copyMultilineText1() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `using System;
+      var yourMultilineVariable = `1)Create MyMVC
+2)dotnet new mvc --auth none 
+3)controller>homecontroller.cs
+using System;
+using System.Collections.Generic;
+using System.Diagnostics;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Logging;
+using MyMVC.Models;
+namespace MyMVC.Controllers
+{ public class HomeController : Controller
+ {
+ public String Index()
+ { return "Hello World"; }
+ }
+}
+4)dotnet run (ctrl +c)
+5)models (create new StockQuote.cs) 
+using System;
+namespace MyMVC.Models
+{
+ public class StockQuote
+ { public string Symbol {get;set;}
+ public int Price{get;set;}
+ }
+} 
+6)MyMVC\Views\Home
+@{
+ ViewData["Title"] = "Home Page";
+}
+<div>
+ Symbol: @Model.Symbol <br/>
+ Price: $@Model.Price <br/>
+</div> 
+
+7)MyMVC\Controllers\homecontroller
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
@@ -31,7 +69,8 @@ namespace MyMVC.Controllers
  return View(model);
  }
  }
-}`;
+}
+`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
