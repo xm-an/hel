@@ -4,14 +4,13 @@
   <title>x</title>
 </head>
 <body>
-  <button onclick="copyMultilineText1()">RSA</button>
-  <button onclick="copyMultilineText2()">Ipconfig</button>
-  <button onclick="copyMultilineText3()">UIPath</button>
-  <button onclick="copyMultilineText4()">wireshark</button>
-  <button onclick="copyMultilineText5()">Ncat</button>
-  <button onclick="copyMultilineText6()">SQL</button>
-  <button onclick="copyMultilineText7()">putty</button>
-  <button onclick="copyMultilineText8()">Enterprise</button>
+  <button onclick="copyMultilineText1()">Core mvc application</button>
+  <button onclick="copyMultilineText2()">RestApi</button>
+  <button onclick="copyMultilineText3()">docker com,img,</button>
+  <button onclick="copyMultilineText4()">package docker</button>
+  <button onclick="copyMultilineText5()">dockervolume</button>
+  <button onclick="copyMultilineText6()">backing services</button>
+  <button onclick="copyMultilineText7()">Kubernet</button>
   <script>
     function copyMultilineText1() {
       // Your variable containing multiline text data
@@ -181,7 +180,7 @@ on2nd command prompt
 
 11)curl --insecure -X PUT -d "{\"term\": \"MVC\", \"definition\":\"Modified record of Model View
 Controller.\"}" -H "Content-Type:application/json" https://localhost:5001/api/glossary 
-(updating item
+(updating item)
 
 12)curl --insecure --request DELETE --url https://localhost:5001/api/glossary/openid  (deleting item)`;
 
@@ -253,8 +252,17 @@ EOF
     }
     function copyMultilineText4() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `testphp.vulnweb.com/login.php
-http.request.method=="POST"`;
+      var yourMultilineVariable = `docker pull ubuntu
+docker run -it ubuntu
+apt-get -y install firefox
+apt-get -y install vim
+
+docker volume
+docker volume create MyVolume
+docker volume ls
+docker volume inspect MyVolume
+docker volume rm MyVolume
+`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
@@ -280,7 +288,11 @@ http.request.method=="POST"`;
     }
     function copyMultilineText5() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `P4
+      var yourMultilineVariable = `Firewall with Open Windows
+Advanced Security>Inbound Rules
+new rule,ports: 80
+ReportServer
+
 1)docker pull nginx
 2)docker run -it --name=webApp -d -p 80:80 nginx
 Open port 80
@@ -336,8 +348,21 @@ cd _data
     }
     function copyMultilineText6() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `http://www.altoromutual.com/login.jsp
-‘or 1=1-- `;
+      var yourMultilineVariable = `docker run -d -p 5000:5000 -e PORT=5000 -e LOCATION_URL=http://localhost:5001 dotnetcoreservices/teamservice:location
+docker run -d -p 5001:5001 -e PORT=5001 dotnetcoreservices/locationservice:nodb 
+docker images
+#team
+curl -H "Content-Type:application/json" -X POST -d '{"id":"e52baa63-d511-417e-9e54-7aab04286281", "name":"KC"}' http://localhost:5000/teams
+#member
+curl -H "Content-Type:application/json" -X POST -d '{"id":"63e7acf8-8fae-42ce-9349-3c8593ac8292", "firstName":"Teste", "lastName":"Test"}' http://localhost:5000/teams/e52baa63-d511-417e-9e54- 7aab04286281/members
+#check member
+curl http://localhost:5000/teams/e52baa63-d511-417e-9e54-7aab04286281
+#Location
+curl -H "Content-Type:application/json" -X POST -d '{"id":"64c3e69f-1580-4b2f-a9ff-2c5f3b8f0e1f", "latitude":12.0,"longitude":12.0,"altitude":10.0,
+"timestamp":0,"memberId":"63e7acf8-8fae-42ce-9349-3c8593ac8292"}' http://localhost:5001/locations/63e7acf8-8fae-42ce-9349-3c8593ac8292
+
+#confirm location
+curl http://localhost:5001/locations/63e7acf8-8fae-42ce-9349-3c8593ac8292 `;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
@@ -362,32 +387,15 @@ cd _data
     }
         function copyMultilineText7() {
       // Your variable containing multiline text data
-      var yourMultilineVariable = `1)ifconfig
-2)cd /home
-mkdir test
-cd test
-cat>test.txt
-Hello Hello
-
-touch f1
-ls
-apt update
-apt install openssh-server
-ufw status
-ufw enable
-ufw status
-ufw allow 22/tcp
-service ssh start
-service ssh status
-
-Open putty
-
-sudo -i
-cd /home
-ls
-cd test
-ls
-cat test.txt`;
+      var yourMultilineVariable = `
+kubeadm init --apiserver-advertise-address $(hostname -i) --pod-network-cidr 10.5.0.0/16
+kubectl apply -f https://raw.githubusercontent.com/cloudnativelabs/kube- router/master/daemonset/kubeadm-kuberouter.yaml
+kubectl create deployment my-dep --image=nginx --replicas=3(create conatiner in pods in master)
+nodes- kubectl get nodes  
+pods- kubectl get pods
+Services- kubectl get services
+version - docker -v
+`;
 
       // Assign the variable's value to the text variable
       var text = yourMultilineVariable;
